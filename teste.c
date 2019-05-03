@@ -15,13 +15,10 @@ int getch(void){
     return ch;
 }
 
-int seta(){
-  int c;
-
+int seta(void){
   if(getch() == '\033'){
-    if(getch() == '['){
+      getch();
       return 0;
-    }
   }else{
     return 1;
   }
@@ -30,33 +27,31 @@ int seta(){
 int main(){
 int c, jogadores;
 //system("/bin/stty raw");
+  system("clear");
   printf("================================== BISCA ==================================\n\n\n");
-  printf("SELECIONE A QUANTIDADE DE JOGADORES:\n\n");
-  printf("  2 jogadores\n");
-  printf("  4 jogadores\n");
+  printf("SELECIONE A DIFICULDADE\n\n");
+  printf("  EASY\n");
+  printf("  HARD\n");
   printf("0 - SAIR");
-while(1){
+
+while(c = getch() != '0'){
   if (seta()){
-    c = getch();
-    switch (c) {
+    switch (getch()) {
       case 'A':
       system("clear");
       printf("================================== BISCA ==================================\n\n\n");
-      printf("SELECIONE A QUANTIDADE DE JOGADORES:\n\n");
-      printf("->2 jogadores\n");
-      printf("  4 jogadores\n\n");
+      printf("SELECIONE A DIFICULDADE\n\n");
+      printf("  -> EASY\n");
+      printf("  HARD\n");
       printf("0 - SAIR");
       break;
       case 'B':
       system("clear");
       printf("================================== BISCA ==================================\n\n\n");
-      printf("SELECIONE A QUANTIDADE DE JOGADORES:\n\n");
-      printf("  2 jogadores\n");
-      printf("->4 jogadores\n\n");
+      printf("SELECIONE A DIFICULDADE\n\n");
+      printf("  EASY\n");
+      printf("  -> HARD\n");
       printf("0 - SAIR");
-      break;
-      case '0':
-      exit(0);
       break;
       default:
       break;
@@ -65,21 +60,3 @@ while(1){
 }
 return 0;
 }
-/*
-if(getch() == 'A'){
-  system("clear");
-  printf("================================== BISCA ==================================\n\n\n");
-  printf("SELECIONE A QUANTIDADE DE JOGADORES:\n\n");
-  printf("->2 jogadores\n");
-  printf("  4 jogadores\n\n");
-  printf("0 - SAIR");
-}
-  if (getch() == 'B'){
-  system("clear");
-  printf("================================== BISCA ==================================\n\n\n");
-  printf("SELECIONE A QUANTIDADE DE JOGADORES:\n\n");
-  printf("  2 jogadores\n");
-  printf("->4 jogadores\n\n");
-  printf("0 - SAIR");
-}
-*/
