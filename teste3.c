@@ -30,112 +30,121 @@ int seta(){
 void dificuldade (int i){
   switch (i){
     case 0:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A DIFICULDADE\n\n");
-    printf("  EASY\n");
-    printf("  HARD\n");
-    printf("0 - SAIR");
-    break;
+      system("clear");
+      printf("================================== BISCA ==================================\n\n\n");
+      printf("SELECIONE A DIFICULDADE:\n\n");
+      printf("  EASY\n");
+      printf("  HARD\n");
+      printf("SELECIONE A QUANTIDADE DE JOGADORES: \n\n");
+      printf("  2 jogadores\n");
+      printf("  4 jogadores\n");
+      printf("1 - JOGAR\n");
+      printf("0 - SAIR");
+      break;
     case 1:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A DIFICULDADE\n\n");
-    printf("  -> EASY\n");
-    printf("  HARD\n");
-    printf("0 - SAIR");
-    break;
+      system("clear");
+      printf("================================== BISCA ==================================\n\n\n");
+      printf("SELECIONE A DIFICULDADE:\n\n");
+      printf("  -> EASY\n");
+      printf("  HARD\n");
+      printf("SELECIONE A QUANTIDADE DE JOGADORES: \n\n");
+      printf("  2 jogadores\n");
+      printf("  4 jogadores\n");
+      printf("1 - JOGAR\n");
+      printf("0 - SAIR");
+      break;
     case 2:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A DIFICULDADE\n\n");
-    printf("  EASY\n");
-    printf("  -> HARD\n");
-    printf("0 - SAIR");
-    break;
+      system("clear");
+      printf("================================== BISCA ==================================\n\n\n");
+      printf("SELECIONE A DIFICULDADE:\n\n");
+      printf("  EASY\n");
+      printf("-> HARD\n");
+      printf("SELECIONE A QUANTIDADE DE JOGADORES: \n\n");
+      printf("  2 jogadores\n");
+      printf("  4 jogadores\n");
+      printf("1 - JOGAR\n");
+      printf("0 - SAIR");
+      break;
+    case 3:
+      system("clear");
+      printf("================================== BISCA ==================================\n\n\n");
+      printf("SELECIONE A DIFICULDADE:\n\n");
+      printf("  EASY\n");
+      printf("  HARD\n");
+      printf("SELECIONE A QUANTIDADE DE JOGADORES: \n\n");
+      printf("  -> 2 jogadores\n");
+      printf("  4 jogadores\n");
+      printf("1 - JOGAR\n");
+      printf("0 - SAIR");
+      break;
+    case 4:
+      system("clear");
+      printf("================================== BISCA ==================================\n\n\n");
+      printf("SELECIONE A DIFICULDADE:\n\n");
+      printf("  EASY\n");
+      printf("  HARD\n");
+      printf("SELECIONE A QUANTIDADE DE JOGADORES: \n\n");
+      printf("  2 jogadores\n");
+      printf("  -> 4 jogadores\n");
+      printf("1 - JOGAR\n");
+      printf("0 - SAIR");
+      break;
     default:
     break;
   }
 }
 
-void jogadores (int i){
-  switch (i){
+void selecionado(int i){
+  switch (i) {
     case 0:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A QUANTIDADE DE JOGADORES \n\n");
-    printf("  2 jogadores\n");
-    printf("  4 jogadores\n");
-    printf("0 - SAIR\n");
-    break;
+      printf(" \nSelecionado-> DIFICULDADE: - JOGADORES: - \n");
+      printf(" - Se nao escolhido sera o default -");
+      break;
     case 1:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A QUANTIDADE DE JOGADORES \n\n");
-    printf("  -> 2 jogadores\n");
-    printf("  4 jogadores\n");
-    printf("0 - SAIR\n");
-    break;
+      printf(" \nSelecionado-> DIFICULDADE: Facil JOGADORES: - \n");
+      break;
     case 2:
-    system("clear");
-    printf("================================== BISCA ==================================\n\n\n");
-    printf("SELECIONE A QUANTIDADE DE JOGADORES \n\n");
-    printf("  2 jogadores\n");
-    printf("  -> 4 jogadores\n");
-    printf("0 - SAIR\n");
-    break;
+      printf(" \nSelecionado-> DIFICULDADE: Facil JOGADORES: 2 \n");
+      printf(" - Se nao escolhido sera o default -");
+      break;
+    case 3
+      printf(" \nSelecionado-> DIFICULDADE: Facil JOGADORES: 4 \n");
+      printf(" - Se nao escolhido sera o default -");
+    case 4:
+      printf(" \nSelecionado-> DIFICULDADE: Dificil JOGADORES: - \n");
+      printf(" - Se nao escolhido sera o default -");
+    case 5:
+      printf(" \nSelecionado-> DIFICULDADE: Dificil JOGADORES: 2 \n");
+      printf(" - Se nao escolhido sera o default -");
+    case 6:
+      printf(" \nSelecionado-> DIFICULDADE: Dificil JOGADORES: - \n");
+      printf(" - Se nao escolhido sera o default -");
+    case 7:
+      printf(" \nSelecionado-> DIFICULDADE: - JOGADORES: 2 \n");
+      printf(" - Se nao escolhido sera o default -");
+    case 8:
+      printf(" \nSelecionado-> DIFICULDADE: - JOGADORES: 4 \n");
+      printf(" - Se nao escolhido sera o default -");
     default:
     break;
   }
 }
-
-
 
 int main(){
-
-int d = 0, j = 0;
-
+  int d, j;
+  dificuldade(0);
+  slecionado(0);
   while(1){
-    dificuldade(d);
-      switch(getch()){
-        case '\033':
-          if(seta == 0){
-            d = 1;
-            dificuldade(d);
-          }else{
-              d = 2;
-              dificuldade(d);
-              }
-          break;
+    switch(getch()){
+      case '\033':
+        if(seta() == 0){
 
-        case '\n':
-          jogadores(j);
-            switch(getch()){
-              case '\033':
-                if(seta() == 0){
-                  j = 1;
-                  jogadores(j);
-                }else{
-                    j = 2;
-                    jogadores(j);
-                    }
-                    break;
-            case '\n':
-                system("clear");
-                printf("O JOGO VAI COMECAR\n");
-                break;
-            default:
-            break;
-          }
-          break;
-
+        }
+      case '\n':
+      case '1':
       case '0':
-        exit(0);
-        break;
-
       default:
       break;
-
     }
   }
 }
