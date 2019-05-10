@@ -51,4 +51,8 @@ void JogoBisca(int d){
     }
     ImprimePontos(pontos,numero_jogadores);
     Ganhador(pontos,numero_jogadores);
+    liberdade_Lista_de_Lista(mao, numero_jogadores);
+    liberdade_Lista_de_Lista(pontos, numero_jogadores);
+    liberdade_baralho(baralho);
+
 }
