@@ -1,0 +1,3 @@
+gcc -c Biblioteca_Modos_Jogo.c Biblioteca_Funcoes_Jogo.c Biblioteca_Funcoes_CM.c Biblioteca_Funcoes_Trunfo.c Biblioteca_Funcoes_IR.c Biblioteca_Funcoes_Exibicao.c Biblioteca_Funcoes_Basicas.c menu.c ideias.c
+
+gcc -o ideias.exe Biblioteca_Modos_Jogo.o Biblioteca_Funcoes_Jogo.c Biblioteca_Funcoes_CM.o Biblioteca_Funcoes_Trunfo.o Biblioteca_Funcoes_IR.o Biblioteca_Funcoes_Exibicao.o Biblioteca_Funcoes_Basicas.o menu.o ideias.o
