@@ -15,15 +15,14 @@ void CriaBaralhoInicial(TipoLista* baralho){
             i++;
         }
     }
+    free(carta);
 }
 
 /* FUNCAO AUXILIAR DE EMBARALHAR UM BARALHO */
 void EmbaralhaBaralhoAuxiliar(TipoLista* baralho){
     TipoLista *baralhoAux1=InicializaBaralho();
-    FazBaralhoVazio(baralhoAux1);
     ChecaBaralhoVazio(baralhoAux1);
     TipoLista *baralhoAux2=InicializaBaralho();
-    FazBaralhoVazio(baralhoAux2);
     ChecaBaralhoVazio(baralhoAux2);
     TipoCarta carta;
     int tamanhoBaralho=Quantidade(baralho);
@@ -46,6 +45,8 @@ void EmbaralhaBaralhoAuxiliar(TipoLista* baralho){
         InsereCarta(carta,baralho);
         RetiraPrimeiraCarta(baralhoAux2);
     }
+    free(baralhoAux1);
+    free(baralhoAux2);
 }
 
 /* EMBARALHA UM BARALHO, CHAMANDO A FUNCAO DE EMBARALHAR AUXILIAR QUATRO VEZES */
@@ -60,7 +61,6 @@ void EmbaralhaBaralho(TipoLista *baralho){
 TipoLista* FormarMao(TipoLista* baralho){
     TipoLista* mao;
     mao=InicializaBaralho();
-    FazBaralhoVazio(mao);
     ChecaBaralhoVazio(mao);
     for(int i=0;i<3;i++){
         InsereCarta(PegaPrimeiraCarta(baralho),mao);

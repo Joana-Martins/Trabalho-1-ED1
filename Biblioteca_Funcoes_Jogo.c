@@ -2,7 +2,6 @@
 /* Prepara o baralho, embaralhando-o, cortando-o e reposicionando o trunfo */
 TipoLista* PreparaBaralho(TipoCarta* trunfo){
     TipoLista* baralho=InicializaBaralho();
-    FazBaralhoVazio(baralho);
     ChecaBaralhoVazio(baralho);
     CriaBaralhoInicial(baralho);
     EmbaralhaBaralho(baralho);
@@ -25,7 +24,6 @@ TipoLista** PreparaMontePontos(TipoLista* baralho, int numero_jogadores){
     TipoLista** pontos=(TipoLista**)malloc(numero_jogadores*sizeof(TipoLista*));
     for(int i=0;i<numero_jogadores;i++){
         pontos[i]=InicializaBaralho();
-        FazBaralhoVazio(pontos[i]);
         ChecaBaralhoVazio(pontos[i]);
     }
     return pontos;
@@ -74,7 +72,7 @@ TipoCarta* PiordaMao(TipoLista* mao){
 /* Estrategia do computador no  modo facil - jogar sempre a primeira carta da mao */
 void JogaComputadorDificil(TipoCarta carta[], TipoCarta* trunfo, TipoLista** mao, int numero_jogadores){
     for(int i=1;i<numero_jogadores;i++){
-        TipoCarta cartasMao[3];
+        TipoCarta* cartasMao=(TipoCarta*)malloc(3*sizeof(TipoCarta));
         TipoCelula* aux=mao[i]->Primeiro;
         int j=0;
         while(aux!=0){
@@ -85,6 +83,7 @@ void JogaComputadorDificil(TipoCarta carta[], TipoCarta* trunfo, TipoLista** mao
         if(MesmoNaipe(&carta[JOGADOR],trunfo)) carta[i]=*PiordaMao(mao[i]);
         else carta[i]=*MelhordaMao(mao[i]);
         RetiraCarta(carta[i],mao[i]);
+        free(cartasMao);
     }
 }
 
@@ -118,16 +117,18 @@ TipoCarta* CartaGanhadoraAux(TipoCarta* carta1, TipoCarta* carta2, TipoCarta* tr
 
 /* Retorna a melhor entre as cartas do jogador e do(s) computador(es) */
 TipoCarta* CartaGanhadora(TipoCarta carta[],TipoCarta* trunfo, int numero_jogadores){
+    TipoCarta* cartaGanhadora;
     switch(numero_jogadores){
-        case 2: return CartaGanhadoraAux(&carta[JOGADOR],&carta[ADVERSARIO1],trunfo);
+        case 2: cartaGanhadora=CartaGanhadoraAux(&carta[JOGADOR],&carta[ADVERSARIO1],trunfo);
         break;
         case 4:{
-            TipoCarta *cartaGanhadoraAux1=CartaGanhadoraAux(&carta[JOGADOR],&carta[ADVERSARIO1],trunfo);
+	    TipoCarta *cartaGanhadoraAux1=CartaGanhadoraAux(&carta[JOGADOR],&carta[ADVERSARIO1],trunfo);
             TipoCarta *cartaGanhadoraAux2=CartaGanhadoraAux(&carta[ADVERSARIO2],&carta[ADVERSARIO3],trunfo);
-            return CartaGanhadoraAux(cartaGanhadoraAux1,cartaGanhadoraAux2,trunfo);
-        }
-        break;
+            cartaGanhadora=CartaGanhadoraAux(cartaGanhadoraAux1,cartaGanhadoraAux2,trunfo);
+	}
+	break;
     }
+    return cartaGanhadora;
 }
 
 /* Imprime as cartas jogadas de certa rodada */

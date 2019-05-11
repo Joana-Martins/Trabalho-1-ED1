@@ -1,31 +1,15 @@
 #include"Biblioteca_Funcoes_Basicas.h"
 
-/* INICIALIZA O ITEM DAS CELULAS DA LISTA ENCADEADA (CARTA) */
-TipoCarta* InicializaCarta(){
-    TipoCarta* carta=(TipoCarta*)malloc(sizeof(TipoCarta));
-    return carta;
-}
-
-/* INICIALIZA UMA CELULA DA LISTA ENCADEADA */
-TipoCelula* InicializaCelula(){
-    TipoCelula* celula=(TipoCelula*)malloc(sizeof(TipoCelula));
-    celula->Prox=(TipoApontador)malloc(sizeof(TipoApontador));
-    return celula;
-}
-
 /* INICIALIZA UMA LISTA ENCADEADA (BARALHO) */
 TipoLista* InicializaBaralho(){
     TipoLista* baralho=(TipoLista*)malloc(sizeof(TipoLista));
-    baralho->Primeiro=InicializaCelula();
-    baralho->Ultimo=InicializaCelula();
-    return baralho;
-}
-
-/* FAZ UMA LISTA ENCADEADA (BARALHO) VAZIO */
-TipoLista* FazBaralhoVazio(){
-    TipoLista* baralho;
+    baralho->Primeiro=(TipoCelula*)malloc(sizeof(TipoCelula));
+    baralho->Ultimo=(TipoCelula*)malloc(sizeof(TipoCelula));
+    baralho->Primeiro->Prox=(TipoApontador)malloc(sizeof(TipoApontador));
+    baralho->Ultimo->Prox=(TipoApontador)malloc(sizeof(TipoApontador));
     baralho->Primeiro=NULL;
     baralho->Ultimo=NULL;
+    return baralho;
 }
 
 /* CHECA SE UMA LISTA ENCADEADA (BARALHO) ESTA VAZIA */
@@ -42,6 +26,7 @@ int Quantidade(TipoLista* baralho){
         aux=aux->Prox;
     }
     return cont;
+
 }
 
 /* CHECA SE DUAS ESTRUTURAS TIPOCARTA POSSUEM O MESMO ELEMENTO 'NAIPE' */

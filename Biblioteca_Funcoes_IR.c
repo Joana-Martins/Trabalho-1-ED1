@@ -11,15 +11,14 @@ int ExisteCarta(TipoCarta carta, TipoLista* baralho){
 }
 
 void InsereCarta(TipoCarta carta, TipoLista *baralho){
-    TipoCelula* novaCelula=InicializaCelula();
     if(ChecaBaralhoVazio(baralho)){
-        baralho->Primeiro=novaCelula;
+        baralho->Primeiro=(TipoApontador) malloc(sizeof(TipoCelula));
         baralho->Primeiro->Item=carta;
         baralho->Primeiro->Prox=NULL;
         baralho->Ultimo=baralho->Primeiro;
     }
     else if(ExisteCarta(carta,baralho)==0){
-        baralho->Ultimo->Prox=novaCelula;
+        baralho->Ultimo->Prox=(TipoApontador) malloc(sizeof(TipoCelula));
         baralho->Ultimo=baralho->Ultimo->Prox;
         baralho->Ultimo->Item=carta;
         baralho->Ultimo->Prox=NULL;
@@ -28,12 +27,12 @@ void InsereCarta(TipoCarta carta, TipoLista *baralho){
 }
 
 void RetiraPrimeiraCarta(TipoLista *baralho){
-    TipoCelula* p=baralho->Primeiro;
     if(ChecaBaralhoVazio(baralho)){
         printf("\nLista vazia\n");
         return;
     }
     else{
+	TipoCelula* p=baralho->Primeiro;
         baralho->Primeiro=p->Prox;
         free(p);
         return;
@@ -44,7 +43,7 @@ void RetiraCarta(TipoCarta carta, TipoLista *baralho){
     TipoCelula* ant=NULL;
     TipoCelula* p=baralho->Primeiro;
     if(ChecaBaralhoVazio(baralho)){
-        printf("\nBaralho vazia\n");
+        printf("\nBaralho vazio\n");
         return;
     }
     while(p!=NULL && (p->Item.naipe!=carta.naipe || p->Item.valor!=carta.valor)){
@@ -53,6 +52,7 @@ void RetiraCarta(TipoCarta carta, TipoLista *baralho){
     }
     if(p==NULL){
         printf("\nCarta nao existe. Nenhum elemento sera retirado.\n");
+	free(ant);
         free(p);
         return;
     }
@@ -60,26 +60,24 @@ void RetiraCarta(TipoCarta carta, TipoLista *baralho){
         baralho->Primeiro=p->Prox;
         free(p);
         free(ant);
-        printf("\n");
         return;
     }
     else if(p==baralho->Ultimo){
         baralho->Ultimo=ant;
         ant->Prox=NULL;
         free(p);
-        printf("\n");
         return;
     }
     else{
         ant->Prox=p->Prox;
         free(p);
-        printf("\n");
         return;
     }
 }
 
 TipoCarta PegaPrimeiraCarta(TipoLista *baralho){
-    TipoCelula* p=baralho->Primeiro;
+    TipoCelula* p;
     if(ChecaBaralhoVazio(baralho)) printf("\nLista vazia\n");
-    else return p->Item;
+    else p=baralho->Primeiro;
+    return p->Item;
 }

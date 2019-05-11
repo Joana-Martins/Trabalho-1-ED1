@@ -14,16 +14,18 @@ int getch(void){
 }
 
 int seta(){
+  int option;
   getch();
   switch(getch()){
     case 'A':
-    return 0;
+    option=0;
     break;
 
     case 'B':
-    return 1;
+    option=1;
     break;
   }
+  return option; 
 }
 
 void titulo(){

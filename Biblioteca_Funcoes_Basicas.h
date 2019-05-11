@@ -25,10 +25,7 @@ typedef struct {
 
 /* FUNCOES */
 
-TipoCarta* InicializaCarta();
-TipoCelula* InicializaCelula();
 TipoLista* InicializaBaralho();
-TipoLista* FazBaralhoVazio();
 int ChecaBaralhoVazio(TipoLista* baralho);
 int Quantidade(TipoLista* baralho);
 int MesmoNaipe(TipoCarta *carta1, TipoCarta* carta2);
