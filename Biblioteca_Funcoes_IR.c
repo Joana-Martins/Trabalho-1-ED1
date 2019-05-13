@@ -7,6 +7,7 @@ int ExisteCarta(TipoCarta carta, TipoLista* baralho){
         if(aux->Item.naipe==carta.naipe && aux->Item.valor==carta.valor) cont++;
         aux=aux->Prox;
     }
+    liberdade_celula(aux);
     return cont;
 }
 
@@ -19,7 +20,7 @@ void InsereCarta(TipoCarta carta, TipoLista *baralho){
     }
     else if(ExisteCarta(carta,baralho)==0){
         baralho->Ultimo->Prox=(TipoApontador) malloc(sizeof(TipoCelula));
-        baralho->Ultimo=baralho->Ultimo->Prox;
+        baralho->Ultimo = baralho->Ultimo->Prox;
         baralho->Ultimo->Item=carta;
         baralho->Ultimo->Prox=NULL;
     }
@@ -30,11 +31,10 @@ void RetiraPrimeiraCarta(TipoLista *baralho){
     if(ChecaBaralhoVazio(baralho)){
         printf("\nLista vazia\n");
         return;
-    }
-    else{
-	TipoCelula* p=baralho->Primeiro;
+    }else{
+	     TipoCelula* p=baralho->Primeiro;
         baralho->Primeiro=p->Prox;
-        free(p);
+        liberdade_celula(p);
         return;
     }
 }
@@ -52,25 +52,25 @@ void RetiraCarta(TipoCarta carta, TipoLista *baralho){
     }
     if(p==NULL){
         printf("\nCarta nao existe. Nenhum elemento sera retirado.\n");
-	free(ant);
-        free(p);
+	      liberdade_celula(ant);
+        liberdade_celula(p);
         return;
     }
     if(p==baralho->Primeiro){
         baralho->Primeiro=p->Prox;
-        free(p);
-        free(ant);
+        liberdade_celula(ant);
+        liberdade_celula(p);
         return;
     }
     else if(p==baralho->Ultimo){
         baralho->Ultimo=ant;
         ant->Prox=NULL;
-        free(p);
+        liberdade_celula(p);
         return;
     }
     else{
         ant->Prox=p->Prox;
-        free(p);
+        liberdade_celula(p);
         return;
     }
 }

@@ -6,6 +6,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Biblioteca_Funcoes_Basicas.h"
+#include "liberdade.h"
 
 void MostraCarta(TipoCarta* carta);
 void MostraCartasBaralho(TipoLista* lista);

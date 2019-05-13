@@ -3,10 +3,6 @@
 /* INICIALIZA UMA LISTA ENCADEADA (BARALHO) */
 TipoLista* InicializaBaralho(){
     TipoLista* baralho=(TipoLista*)malloc(sizeof(TipoLista));
-    baralho->Primeiro=(TipoCelula*)malloc(sizeof(TipoCelula));
-    baralho->Ultimo=(TipoCelula*)malloc(sizeof(TipoCelula));
-    baralho->Primeiro->Prox=(TipoApontador)malloc(sizeof(TipoApontador));
-    baralho->Ultimo->Prox=(TipoApontador)malloc(sizeof(TipoApontador));
     baralho->Primeiro=NULL;
     baralho->Ultimo=NULL;
     return baralho;
@@ -25,6 +21,7 @@ int Quantidade(TipoLista* baralho){
         cont++;
         aux=aux->Prox;
     }
+
     return cont;
 
 }

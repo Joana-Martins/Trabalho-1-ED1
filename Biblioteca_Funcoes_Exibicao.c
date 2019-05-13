@@ -35,4 +35,5 @@ void MostraCartasBaralho(TipoLista* lista){
         MostraCarta(&aux->Item);
         aux=aux->Prox;
     }
+    liberdade_celula(aux);
 }

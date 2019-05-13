@@ -45,8 +45,8 @@ void EmbaralhaBaralhoAuxiliar(TipoLista* baralho){
         InsereCarta(carta,baralho);
         RetiraPrimeiraCarta(baralhoAux2);
     }
-    free(baralhoAux1);
-    free(baralhoAux2);
+    liberdade_baralho(baralhoAux1);
+    liberdade_baralho(baralhoAux2);
 }
 
 /* EMBARALHA UM BARALHO, CHAMANDO A FUNCAO DE EMBARALHAR AUXILIAR QUATRO VEZES */

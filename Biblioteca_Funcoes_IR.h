@@ -6,6 +6,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Biblioteca_Funcoes_Basicas.h"
+#include "liberdade.h"
 
 int ExisteCarta(TipoCarta carta, TipoLista* baralho);
 void InsereCarta(TipoCarta carta, TipoLista *baralho);
