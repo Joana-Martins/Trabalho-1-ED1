@@ -25,7 +25,7 @@ int seta(){
     option=1;
     break;
   }
-  return option; 
+  return option;
 }
 
 void titulo(){
@@ -132,7 +132,7 @@ int menu_J(int y){
   while (w == 0){
     switch(getch()){
       case '\033':
-        if(seta() == 1){
+        if((seta()) == 1){
           if( i == 0){
             i = 1;
             x = 2;
@@ -175,7 +175,8 @@ int menu_J(int y){
           d = 1;
           jogadores(i);
           selecionado(d);
-        }else if ( x == 3 && y == 0){
+        }else if ( x   selecionado(d);
+== 3 && y == 0){
           d = 2;
           jogadores(i);
           selecionado(d);

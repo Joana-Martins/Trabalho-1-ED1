@@ -36,6 +36,7 @@ void JogoBisca(int d){
         MostraCarta(&trunfo);
         carta[JOGADOR]=ChecaExisteCarta(carta,mao,numero_jogadores);
         RetiraCarta(carta[JOGADOR],mao[JOGADOR]);
+        system("clear");
         if(modo_jogo=='F') JogaComputadorFacil(carta,mao,numero_jogadores);
         else JogaComputadorDificil(carta,&trunfo,mao,numero_jogadores);
         ImprimeCartasJogadas(carta,numero_jogadores);
@@ -47,6 +48,7 @@ void JogoBisca(int d){
             printf("\nSUA NOVA MAO:\n");
             MostraCartasBaralho(mao[JOGADOR]);
         }
+
     }
     ImprimePontos(pontos,numero_jogadores);
     Ganhador(pontos,numero_jogadores);
