@@ -7,5 +7,6 @@
 
 void liberdade_Lista_de_Lista(TipoLista **Lista, int tam);
 void liberdade_baralho(TipoLista *Lista);
+void liberdade_celula(TipoCelula *x);
 
 #endif

@@ -1,6 +1,5 @@
 #include"Biblioteca_Modos_Jogo.h"
 
-
 char modo_d(int d){
   char c;
   if (d == 0 || d == 2){
@@ -51,9 +50,13 @@ void JogoBisca(int d){
     }
     ImprimePontos(pontos,numero_jogadores);
     Ganhador(pontos,numero_jogadores);
-    for(int i=0;i<numero_jogadores;i++) free(pontos[i]);
+
+    liberdade_baralho(baralho);
+    liberdade_Lista_de_Lista(mao, numero_jogadores);
+    liberdade_Lista_de_Lista(pontos, numero_jogadores);
+    /*for(int i=0;i<numero_jogadores;i++) free(pontos[i]);
     free(pontos);
     for(int i=0;i<numero_jogadores;i++) free(mao[i]);
     free(mao);
-    free(baralho);
+    free(baralho);*/
 }
