@@ -23,7 +23,9 @@ int modo_j(int d){
 void JogoBisca(int d){
     int numero_jogadores = modo_j(d);
     char modo_jogo = modo_d(d);
+    int ganhou = 0;
     TipoCarta trunfo;
+    TipoCarta *cartaganhadora;
     TipoLista* baralho=PreparaBaralho(&trunfo);
     TipoLista** mao=PreparaMaos(baralho,numero_jogadores);
     TipoLista** pontos=PreparaMontePontos(baralho,numero_jogadores);
@@ -35,14 +37,20 @@ void JogoBisca(int d){
         printf("\nTRUNFO: ");
         MostraCarta(&trunfo);
         carta[JOGADOR]=ChecaExisteCarta(carta,mao,numero_jogadores);
-        RetiraCarta(carta[JOGADOR],mao[JOGADOR]);
-        system("clear");
-        if(modo_jogo=='F') JogaComputadorFacil(carta,mao,numero_jogadores);
-        else JogaComputadorDificil(carta,&trunfo,mao,numero_jogadores);
+
+        if(modo_jogo=='F'){
+          primeiro_jogar_facil(ganhou, numero_jogadores, carta, mao);
+          cartaganhadora = CartaGanhadora(carta,&trunfo,numero_jogadores, ganhou);
+          ganhou = ganhador_rodada(numero_jogadores, carta, cartaganhadora);
+        }else{
+          primeiro_jogar_dificil(ganhou, numero_jogadores, carta, mao, &trunfo);
+          cartaganhadora = CartaGanhadora(carta,&trunfo,numero_jogadores, ganhou);
+          ganhou = ganhador_rodada(numero_jogadores, carta, cartaganhadora);
+        }
         ImprimeCartasJogadas(carta,numero_jogadores);
         printf("\nCARTA GANHADORA: ");
-        MostraCarta(CartaGanhadora(carta,&trunfo,numero_jogadores));
-        InsereMontePontos(carta,pontos,&trunfo,numero_jogadores);
+        MostraCarta(CartaGanhadora(carta,&trunfo,numero_jogadores, ganhou));
+        InsereMontePontos(carta,pontos,&trunfo,numero_jogadores, ganhou);
         RefazMaoBaralho(mao,baralho,numero_jogadores);
         if(!ChecaBaralhoVazio(mao[JOGADOR])){
             printf("\nSUA NOVA MAO:\n");
@@ -52,7 +60,6 @@ void JogoBisca(int d){
     }
     ImprimePontos(pontos,numero_jogadores);
     Ganhador(pontos,numero_jogadores);
-
     liberdade_baralho(baralho);
     liberdade_Lista_de_Lista(mao, numero_jogadores);
     liberdade_Lista_de_Lista(pontos, numero_jogadores);
