@@ -1,5 +1,6 @@
 #include"Biblioteca_Funcoes_IR.h"
 
+/* RETORNA A QUANTIDADE DE VEZES QUE UMA DADA CARTA APARECE EM UM DADO BARALHO */
 int ExisteCarta(TipoCarta carta, TipoLista* baralho){
     TipoCelula* aux=baralho->Primeiro;
     int cont=0;
@@ -7,10 +8,11 @@ int ExisteCarta(TipoCarta carta, TipoLista* baralho){
         if(aux->Item.naipe==carta.naipe && aux->Item.valor==carta.valor) cont++;
         aux=aux->Prox;
     }
-    liberdade_celula(aux);
+    DesalocaCelula(aux);
     return cont;
 }
 
+/* INSERE NO FIM DE UM DADO BARALHO UMA DADA CARTA */
 void InsereCarta(TipoCarta carta, TipoLista *baralho){
     if(ChecaBaralhoVazio(baralho)){
         baralho->Primeiro=(TipoApontador) malloc(sizeof(TipoCelula));
@@ -27,18 +29,20 @@ void InsereCarta(TipoCarta carta, TipoLista *baralho){
     else printf("\nTENTAVIVA DE INSERIR CARTA JA EXISTENTE. NENHUMA CARTA SERA INSERIDA.\n");
 }
 
+/* RETIRA A PRIMEIRA CARTA DE UM DADO BARALHO */
 void RetiraPrimeiraCarta(TipoLista *baralho){
     if(ChecaBaralhoVazio(baralho)){
         printf("\nLista vazia\n");
         return;
     }else{
-	     TipoCelula* p=baralho->Primeiro;
+	    TipoCelula* p=baralho->Primeiro;
         baralho->Primeiro=p->Prox;
-        liberdade_celula(p);
+        DesalocaCelula(p);
         return;
     }
 }
 
+/* RETIRA UMA DADA CARTA DE UM DADO BARALHO */
 void RetiraCarta(TipoCarta carta, TipoLista *baralho){
     TipoCelula* ant=NULL;
     TipoCelula* p=baralho->Primeiro;
@@ -52,29 +56,30 @@ void RetiraCarta(TipoCarta carta, TipoLista *baralho){
     }
     if(p==NULL){
         printf("\nCarta nao existe. Nenhum elemento sera retirado.\n");
-	      liberdade_celula(ant);
-        liberdade_celula(p);
+	    DesalocaCelula(ant);
+        DesalocaCelula(p);
         return;
     }
     if(p==baralho->Primeiro){
         baralho->Primeiro=p->Prox;
-        liberdade_celula(ant);
-        liberdade_celula(p);
+        DesalocaCelula(ant);
+        DesalocaCelula(p);
         return;
     }
     else if(p==baralho->Ultimo){
         baralho->Ultimo=ant;
         ant->Prox=NULL;
-        liberdade_celula(p);
+        DesalocaCelula(p);
         return;
     }
     else{
         ant->Prox=p->Prox;
-        liberdade_celula(p);
+        DesalocaCelula(p);
         return;
     }
 }
 
+/* RETORNA A PRIMEIRA CARTA DE UM DADO BARALHO */
 TipoCarta PegaPrimeiraCarta(TipoLista *baralho){
     TipoCelula* p;
     if(ChecaBaralhoVazio(baralho)) printf("\nLista vazia\n");

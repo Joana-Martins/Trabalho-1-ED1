@@ -12,6 +12,7 @@
    #define DIAMOND "\xE2\x99\xA6"
 #endif
 
+/* IMPRIME UMA DADA CARTA */
 void MostraCarta(TipoCarta* carta){
     switch(carta->naipe){
         case 'P':
@@ -29,11 +30,12 @@ void MostraCarta(TipoCarta* carta){
     }
 }
 
-void MostraCartasBaralho(TipoLista* lista){
-    TipoCelula* aux=lista->Primeiro;
+/* IMPRIME UM DADO BARALHO */
+void MostraCartasBaralho(TipoLista* baralho){
+    TipoCelula* aux=baralho->Primeiro;
     while(aux!=NULL){
         MostraCarta(&aux->Item);
         aux=aux->Prox;
     }
-    liberdade_celula(aux);
+    DesalocaCelula(aux);
 }

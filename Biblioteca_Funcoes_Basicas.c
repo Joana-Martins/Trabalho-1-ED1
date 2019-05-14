@@ -21,9 +21,7 @@ int Quantidade(TipoLista* baralho){
         cont++;
         aux=aux->Prox;
     }
-
     return cont;
-
 }
 
 /* CHECA SE DUAS ESTRUTURAS TIPOCARTA POSSUEM O MESMO ELEMENTO 'NAIPE' */

@@ -1,5 +1,6 @@
 #include"Biblioteca_Funcoes_Trunfo.h"
 
+/* RETORNA UMA CARTA ALEATORIA PARA SER O TRUNFO */
 TipoCarta CortaTrunfo(TipoLista* baralho){
     TipoCarta trunfo;
     if(ChecaBaralhoVazio(baralho)) printf("\nBaralho vazio!\n");
@@ -12,11 +13,12 @@ TipoCarta CortaTrunfo(TipoLista* baralho){
 		        trunfo=aux->Item;
             aux=aux->Prox;
         }
-        liberdade_celula(aux);
+        DesalocaCelula(aux);
     }
     return trunfo;
 }
 
+/* REPOSICIONA O TRUNFO NO BARALHO, RETIRANDO-O DO MESMO E INSERINDO-O NO FINAL */
 void ReposicionaTrunfo(TipoCarta trunfo, TipoLista* baralho){
     RetiraCarta(trunfo,baralho);
     InsereCarta(trunfo,baralho);

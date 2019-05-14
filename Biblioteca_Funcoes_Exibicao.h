@@ -6,9 +6,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Biblioteca_Funcoes_Basicas.h"
-#include "liberdade.h"
+#include"Biblioteca_Funcoes_Desalocar.h"
 
 void MostraCarta(TipoCarta* carta);
-void MostraCartasBaralho(TipoLista* lista);
+void MostraCartasBaralho(TipoLista* baralho);
 
 #endif

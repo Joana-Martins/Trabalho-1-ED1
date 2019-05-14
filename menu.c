@@ -1,4 +1,3 @@
-
 #include "menu.h"
 
 int getch(void){
