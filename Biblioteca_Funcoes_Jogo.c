@@ -142,6 +142,7 @@ TipoCarta* CartaGanhadora(TipoCarta carta[], TipoCarta* trunfo, int numero_jogad
 /* IMPRIME AS CARTAS JOGADAS EM UMA CERTA RODADA */
 void ImprimeCartasJogadas(TipoCarta carta[], int numero_jogadores, int ganhou){
     int* p=RefazOrdemJogadores(ganhou,numero_jogadores);
+    system("clear");
     printf("\nRODADA:\n");
     for(int i=0;i<numero_jogadores;i++){
         switch(p[i]){

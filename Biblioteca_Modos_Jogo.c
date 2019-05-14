@@ -18,10 +18,13 @@ int modo_j(int d){
 
 /* FUNCAO DE JOGABILIDADE DO BISCA */
 void JogoBisca(int d){
+    clock_t t0, tf;
+    double tempo_gasto;
+    t0 = clock();
     int numero_jogadores = modo_j(d);
     char modo_jogo = modo_d(d);
     int ganhou = 0;
-    int opcao;
+    int opcao = 5;
     TipoCarta trunfo;
     TipoCarta *cartaganhadora;
     TipoLista* baralho=PreparaBaralho(&trunfo);
@@ -43,13 +46,19 @@ void JogoBisca(int d){
         MostraCarta(CartaGanhadora(carta,&trunfo,numero_jogadores, ganhou));
         InsereMontePontos(carta,pontos,&trunfo,numero_jogadores, ganhou);
         RefazMaoBaralho(mao,baralho,numero_jogadores);
+        opcao = 5;
+        while(opcao != 0){
         printf("\n**********************MENU**********************\n");
         printf("\n1 - MOSTRAR CARTAR DO BARALHO");
         printf("\n2 - MOSTAR QUANTIDADE DE CARTAS NA MAO");
         printf("\n3 - MOSTRAR PONTOS DOS JOGADORES");
-        printf("\n\nDigite a opcao escolhida, ou 'zero' para sair: ");
+        printf("\n\nDigite a opcao ou 'zero' para sair: ");
         scanf(" %d",&opcao);
+        system("clear");
+
         switch(opcao){
+          case 0:
+          break;
           case 1:
             printf("\nIMPRIMINDO BARALHO\n");
             MostraCartasBaralho(baralho);
@@ -61,7 +70,11 @@ void JogoBisca(int d){
             ImprimePontos(pontos,numero_jogadores);
             printf("\n");
           break;
+          default:
+          printf("Opcao invalida! Digite Novamente\n");
+          break;
         }
+      }
         if(!ChecaBaralhoVazio(mao[JOGADOR])){
             printf("\nSUA NOVA MAO:\n");
             MostraCartasBaralho(mao[JOGADOR]);
@@ -73,4 +86,7 @@ void JogoBisca(int d){
     DesalocaLista(baralho);
     DesalocaListaDeLista(mao, numero_jogadores);
     DesalocaListaDeLista(pontos, numero_jogadores);
+   tf = clock();
+   //tempo_gasto = ( (double) (tf - t0) ) / CLOCKS_PER_SEC;
+   printf("Tempo gasto: %lf s\n", tempo_gasto);
 }
